@@ -35,4 +35,4 @@ Fetch - API method is used to transfer the data between server and client.
 
 <br>
 
-# <p style="text-align:center"> **Thankyou for visiting!** </p>
+# <p style="text-align:center;"> **Thankyou for visiting!** </p>
