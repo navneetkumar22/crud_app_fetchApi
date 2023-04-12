@@ -1,19 +1,20 @@
 const tableBody = document.getElementById("tbody");
 const heading = document.getElementById("heading");
 const createButton = document.getElementById("btn");
+const domain = "https://crud-app-5tyu.onrender.com";
 
 
 // function to fetch all users
 heading.addEventListener("click", fetchUsers);
 function fetchUsers() {
-    fetch("https://crupappfetchapi-production.up.railway.app/getUsers")
+    fetch(`${domain}/getUsers`)
         .then(response => { return response.json() })
         .then((data) => { return data.users })
         .then((newUser) => {
             tableBody.innerHTML = "";
             newUser.forEach(element => {
                 tableBody.innerHTML +=
-                `<tr class="userview">
+                    `<tr class="userview">
                    <td class="name">${element.name}</td>
                    <td class="email">${element.email}</td>
                    <td><button class="edit-btn" id="${element._id}" onclick="handleEdit(this)">Edit</button></td>
@@ -27,7 +28,7 @@ function fetchUsers() {
 // creating a new user
 createButton.addEventListener("click", createNewUser);
 function createNewUser() {
-    fetch("https://crupappfetchapi-production.up.railway.app/create", {
+    fetch(`${domain}/create`, {
         method: "POST",
         headers: {
             "content-Type": "application/json"
@@ -49,7 +50,7 @@ function createNewUser() {
 
 //editing a user
 function handleEdit(element) {
-    fetch("https://crupappfetchapi-production.up.railway.app/editUser", {
+    fetch(`${domain}/editUser`, {
         method: "PUT",
         headers: {
             "content-Type": "application/json"
@@ -69,7 +70,7 @@ function handleEdit(element) {
 
 //deleting a user
 function handleDelete(item) {
-    fetch(`https://crupappfetchapi-production.up.railway.app/deleteUser/${item.id}`, {
+    fetch(`${domain}/deleteUser/${item.id}`, {
         method: "DELETE",
         headers: {
             "content-Type": "application/json"
